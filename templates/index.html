@@ -17,13 +17,18 @@
 <body>
  <div class="login">
 	<h1>Predict Net hourly electrical energy output</h1>
+	 <p>Dataset <a href="https://archive.ics.uci.edu/ml/datasets/combined+cycle+power+plant" target="_blank" rel="noopener noreferrer">link</a></p>
+	 <p> Temperature in the range 1.81°C and 37.11°C </p>
+	 <p> Ambient Pressure in the range 992.89-1033.30 milibar, </p>
+	 <p> Relative Humidity in the range 25.56% to 100.16% </p>
+	 <p> Exhaust Vacuum (V) in teh range 25.36-81.56 cm Hg </p>
 
      <!-- Main Input For Receiving Query to our ML -->
     <form action="{{ url_for('predict')}}"method="post">
-    	<input type="text" name="Temperature" placeholder="Temperature [1.81-37.11]°C" required="required" />
-        <input type="text" name="Ambient_Pressure" placeholder="Ambient Pressure [992.89-1033.30] milibar" required="required" />
-		<input type="text" name="Relative_Humidity" placeholder="Relative Humidity [25.56-100.16]%" required="required" />
-		<input type="text" name="Exhaust_Vacuum" placeholder="Exhaust Vacuum [25.36-81.56]cm Hg" required="required" />
+    	<input type="text" name="Temperature" placeholder="Temperature" required="required" />
+        <input type="text" name="Ambient_Pressure" placeholder="Ambient Pressure" required="required" />
+		<input type="text" name="Relative_Humidity" placeholder="Relative Humidity" required="required" />
+		<input type="text" name="Exhaust_Vacuum" placeholder="Exhaust Vacuum" required="required" />
 
         <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
     </form>
