@@ -14,7 +14,7 @@ from flask import Flask, request, jsonify, render_template
 
 #%%
 
-app = Flask(__name)
+app = Flask(__name__)
 
 with open("model.pkl", "rb") as f:
     model = pickle.load(f)
@@ -26,18 +26,17 @@ def home():
 
 @app.route('/predict', methods = ['POST'])
 def predict():
-    features = [x for x in request.form.values()]
-    features = [np.array(features)]
-    prediction = np.round(model.predict(features)[0], 2)
+    int_features = [int(x) for x in request.form.values()]
+    final_features = [np.array(int_features)]
+    prediction = model.predict(final_features)
+
+    output = round(prediction[0], 2)
     
-    return render_template('index.html', prediction_text = 'predicted Net hourly electrical energy is {} MW'.format(prediction))
+    return render_template('index.html', prediction_text = 'predicted Net hourly electrical energy is {} MW'.format(output))
 
     
 if __name__ == "__main__":
     app.run(debug = True)
-
-
-
 
 
 
